@@ -324,7 +324,8 @@ void CollectMainEdgesPass::on_throw(VertexAdaptor<op_throw> throw_op) {
 }
 
 void CollectMainEdgesPass::on_try(VertexAdaptor<op_try> try_op) {
-  create_set(try_op->exception(), G->get_class(try_op->exception_type_declaration));
+  auto catch_op = try_op->catch_list()[0].as<op_catch>();
+  create_set(catch_op->var(), G->get_class(catch_op->type_declaration));
 }
 
 void CollectMainEdgesPass::on_set_op(VertexPtr v) {
