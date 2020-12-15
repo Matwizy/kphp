@@ -86,6 +86,8 @@ struct master_data_t {
   int ask_http_fd_generation;
   int sent_http_fd_generation;
 
+  uint64_t instance_cache_elements_stored;
+
   int reserved[50];
 };
 
@@ -521,6 +523,8 @@ void master_init(master_data_t *me, master_data_t *other) {
 
   me->ask_http_fd_generation = 0;
   me->sent_http_fd_generation = 0;
+
+  me->instance_cache_elements_stored = 0;
 
   me->is_alive = true; //NB: must be the last operation.
 }
@@ -2113,6 +2117,7 @@ void run_master() {
 
     me->running_workers_n = me_running_workers_n;
     me->dying_workers_n = me_dying_workers_n;
+    me->instance_cache_elements_stored = instance_cache_get_stats().elements_stored.load(std::memory_order_relaxed);
 
     if (state != master_state::off_in_graceful_shutdown) {
       if (changed && other->is_alive) {
