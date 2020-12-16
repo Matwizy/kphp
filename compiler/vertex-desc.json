@@ -1495,6 +1495,17 @@
     }
   },
   {
+    "comment": ":::float4",
+    "name": "op_conv_float4",
+    "base_name": "meta_op_unary",
+    "props": {
+      "rl": "rl_op",
+      "cnst": "cnst_const_func",
+      "type": "conv_op",
+      "str": "f$floatval"
+    }
+  },
+  {
     "comment": "(string)expr(); or strval(expr())",
     "name": "op_conv_string",
     "base_name": "meta_op_unary",

@@ -1097,7 +1097,7 @@ bool f$is_int(const mixed &v) {
 
 template<class T>
 bool f$is_float(const T &) {
-  return std::is_same<T, double>::value;
+  return vk::is_type_in_list<T, double, float>{};
 }
 
 template<class T>

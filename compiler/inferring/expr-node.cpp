@@ -533,6 +533,10 @@ void ExprNodeRecalc::recalc_expr(VertexPtr expr) {
       recalc_fork(expr.as<op_fork>());
       break;
 
+    case op_conv_float4:
+      recalc_ptype<tp_float4>();
+      break;
+
     case op_conv_float:
     case op_float_const:
     case op_div:

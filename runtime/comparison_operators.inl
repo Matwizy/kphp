@@ -307,12 +307,6 @@ inline bool eq2(const array<T1> &lhs, const array<T2> &rhs) {
 }
 
 template<class T>
-inline bool eq2(const T &lhs, int32_t rhs);
-
-template<class T>
-inline bool eq2(int32_t lhs, const T &rhs);
-
-template<class T>
 inline bool eq2(const T &lhs, int32_t rhs) {
   return eq2(lhs, int64_t{rhs});
 }
@@ -320,6 +314,16 @@ inline bool eq2(const T &lhs, int32_t rhs) {
 template<class T>
 inline bool eq2(int32_t lhs, const T &rhs) {
   return eq2(int64_t{lhs}, rhs);
+}
+
+template<class T>
+inline bool eq2(float lhs, const T &rhs) {
+  return eq2(double{lhs}, rhs);
+}
+
+template<class T>
+inline bool eq2(const T &lhs, float rhs) {
+  return eq2(lhs, double{rhs});
 }
 
 template<class T, class U>
@@ -494,12 +498,6 @@ inline bool equals(const Optional<T> &lhs, const Optional<T> &rhs) {
 }
 
 template<class T>
-inline bool equals(const T &lhs, int32_t rhs);
-
-template<class T>
-inline bool equals(int32_t lhs, const T &rhs);
-
-template<class T>
 inline bool equals(const T &lhs, int32_t rhs) {
   return equals(lhs, int64_t{rhs});
 }
@@ -507,6 +505,16 @@ inline bool equals(const T &lhs, int32_t rhs) {
 template<class T>
 inline bool equals(int32_t lhs, const T &rhs) {
   return equals(int64_t{lhs}, rhs);
+}
+
+template<class T>
+inline bool equals(const T &lhs, float rhs) {
+  return equals(lhs, double{rhs});
+}
+
+template<class T>
+inline bool equals(float lhs, const T &rhs) {
+  return equals(double{lhs}, rhs);
 }
 
 template<class T1, class T2>

@@ -219,6 +219,9 @@ VertexPtr GenTree::conv_to(VertexPtr x) {
     case tp_float:
       return VertexAdaptor<op_conv_float>::create(x).set_location(x);
 
+    case tp_float4:
+      return VertexAdaptor<op_conv_float4>::create(x).set_location(x);
+
     case tp_array:
       return VertexAdaptor<op_conv_array>::create(x).set_location(x);
 

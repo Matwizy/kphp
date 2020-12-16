@@ -453,8 +453,8 @@ void FinalCheckPass::check_eq3_neq3(VertexPtr lhs, VertexPtr rhs, Operation op) 
   // we only check the ===, but !== would also make sense;
   // but it results in a lot of warnings, so we disable it for now
   if (op == op_eq3) {
-    if ((lhs_type->ptype() == tp_float && !lhs_type->or_false_flag() && !lhs_type->or_null_flag()) ||
-        (rhs_type->ptype() == tp_float && !rhs_type->or_false_flag() && !rhs_type->or_null_flag())) {
+    if ((vk::any_of_equal(lhs_type->ptype(), tp_float, tp_float4) && !lhs_type->or_false_flag() && !lhs_type->or_null_flag()) ||
+        (vk::any_of_equal(lhs_type->ptype(), tp_float, tp_float4) && !rhs_type->or_false_flag() && !rhs_type->or_null_flag())) {
       kphp_warning("Using === with float operand");
     }
     if (!can_be_same_type(lhs_type, rhs_type)) {

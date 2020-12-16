@@ -145,6 +145,7 @@ enum TokenType {
 
   tok_int,
   tok_float,
+  tok_float4,
   tok_string,
   tok_object,
   tok_callable,

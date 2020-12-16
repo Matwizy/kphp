@@ -218,6 +218,7 @@ void compile_power(VertexAdaptor<op_pow> power, CodeGenerator &W) {
       // pow return type with positive constexpr integer exponent and any integer base is inferred as int
       W << "int_power";
       return;
+    case tp_float4:
     case tp_float:
       // pow return type with positive constexpr integer exponent and any float base is inferred as float
       W << "float_power";

@@ -19,6 +19,7 @@ const char *ptype_name(PrimitiveType id) {
     case tp_bool:          return "bool";
     case tp_int:           return "int";
     case tp_float:         return "float";
+    case tp_float4:        return "float4";
     case tp_array:         return "array";
     case tp_string:        return "string";
     case tp_mixed:         return "mixed";
@@ -79,6 +80,11 @@ PrimitiveType type_lca(PrimitiveType a, PrimitiveType b) {
 
   if (b >= tp_void) { // instances, future, etc — can mix only with false
     return tp_Error;
+  }
+
+  // float4 forces the whole expression to be float4
+  if ((a == tp_float4 || b == tp_float4) && vk::any_of_equal(a, tp_int, tp_float, tp_float4) && vk::any_of_equal(b, tp_int, tp_float, tp_float4)) {
+    return tp_float4;
   }
 
   if (vk::any_of_equal(a, tp_int, tp_float) && vk::any_of_equal(b, tp_int, tp_float)) { // float can store int

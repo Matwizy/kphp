@@ -23,6 +23,7 @@ constexpr int STRLEN_INT32 = 11;
 constexpr int STRLEN_INT64 = 20;
 constexpr int STRLEN_INT = STRLEN_INT64;
 constexpr int STRLEN_FLOAT = 21;
+constexpr int STRLEN_FLOAT4 = STRLEN_FLOAT;
 constexpr int STRLEN_ARRAY = 5;
 constexpr int STRLEN_ARRAY_ = STRLEN_ARRAY | STRLEN_WARNING_FLAG;
 constexpr int STRLEN_STRING = STRLEN_DYNAMIC;

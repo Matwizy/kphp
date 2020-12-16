@@ -13,6 +13,7 @@ enum PrimitiveType {
   tp_bool,
   tp_int,
   tp_float,
+  tp_float4,
   tp_string,
   tp_array,
   tp_mixed,

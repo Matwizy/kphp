@@ -952,6 +952,8 @@ VertexPtr GenTree::conv_to(VertexPtr x, PrimitiveType tp, bool ref_flag) {
       return conv_to<tp_string>(x);
     case tp_float:
       return conv_to<tp_float>(x);
+    case tp_float4:
+      return conv_to<tp_float4>(x);
     case tp_array:
       return conv_to<tp_array>(x);
     case tp_regexp:

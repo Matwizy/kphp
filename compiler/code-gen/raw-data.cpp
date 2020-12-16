@@ -95,7 +95,7 @@ std::vector<int> compile_arrays_raw_representation(const std::vector<VarPtr> &co
     int array_len_in_doubles = -1;
 
     if (0 <= array_size && array_size <= (1 << 30) - array_len()) {
-      if (vk::any_of_equal(vertex_inner_type->ptype(), tp_int, tp_float)) {
+      if (vk::any_of_equal(vertex_inner_type->ptype(), tp_int, tp_float, tp_float4)) {
         array_len_in_doubles = array_len() + array_size;
       }
     }
@@ -139,7 +139,7 @@ std::vector<int> compile_arrays_raw_representation(const std::vector<VarPtr> &co
       if (auto double_arrow = actual_vertex.try_as<op_double_arrow>()) {
         actual_vertex = GenTree::get_actual_value(double_arrow->value());
       }
-      kphp_assert(vk::any_of_equal(vertex_inner_type->ptype(), tp_int, tp_float));
+      kphp_assert(vk::any_of_equal(vertex_inner_type->ptype(), tp_int, tp_float, tp_float4));
 
       if (vertex_inner_type->ptype() == tp_int) {
         W << ", { .i64 =" << actual_vertex << " }";

@@ -165,6 +165,9 @@ VertexPtr PhpDocTypeRuleParser::parse_simple_type() {
     case tok_float:
       cur_tok++;
       return GenTree::create_type_help_vertex(tp_float);
+    case tok_float4:
+      cur_tok++;
+      return GenTree::create_type_help_vertex(tp_float4);
     case tok_string:
       cur_tok++;
       return GenTree::create_type_help_vertex(tp_string);

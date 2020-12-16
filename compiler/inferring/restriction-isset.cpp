@@ -68,6 +68,7 @@ bool RestrictionIsset::isset_is_dangerous(int isset_flags, const TypeData *tp) {
       check_mask |= ifi_is_scalar | ifi_is_numeric | ifi_is_integer;
       break;
     }
+    case tp_float4:
     case tp_float: {
       check_mask |= ifi_is_scalar | ifi_is_numeric | ifi_is_float;
       break;

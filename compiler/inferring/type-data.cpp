@@ -253,7 +253,7 @@ ClassPtr TypeData::get_first_class_type_inside() const {
 }
 
 bool TypeData::is_primitive_type() const {
-  return vk::any_of_equal(get_real_ptype(), tp_int, tp_bool, tp_float, tp_future, tp_future_queue);
+  return vk::any_of_equal(get_real_ptype(), tp_int, tp_bool, tp_float, tp_float4, tp_future, tp_future_queue);
 }
 
 TypeData::flags_t TypeData::flags() const {
@@ -561,6 +561,10 @@ inline void get_cpp_style_type(const TypeData *type, std::string &res) {
       res += ">";
       break;
     }
+    case tp_float4: {
+      res += "float";
+      break;
+    }
     case tp_float: {
       res += "double";
       break;
@@ -739,6 +743,8 @@ int type_strlen(const TypeData *type) {
       return STRLEN_BOOL_;
     case tp_int:
       return STRLEN_INT;
+    case tp_float4:
+      return STRLEN_FLOAT4;
     case tp_float:
       return STRLEN_FLOAT;
     case tp_array:

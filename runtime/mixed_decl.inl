@@ -5,7 +5,7 @@
 #endif
 
 template<typename T>
-struct is_type_acceptable_for_mixed : vk::is_type_in_list<T, long, long long, int, bool, double, string> {
+struct is_type_acceptable_for_mixed : vk::is_type_in_list<T, long, long long, int, bool, float, double, string> {
 };
 
 template<typename T>
@@ -217,8 +217,9 @@ private:
   auto get_type_and_value_ptr(const bool      &) { return std::make_pair(type::BOOLEAN, &as_bool());   }
   auto get_type_and_value_ptr(const long      &) { return std::make_pair(type::INTEGER, &as_int());    }
   auto get_type_and_value_ptr(const long long &) { return std::make_pair(type::INTEGER, &as_int());    }
-  auto get_type_and_value_ptr(const int       &) { return std::make_pair(type::INTEGER, &as_int()); }
+  auto get_type_and_value_ptr(const int       &) { return std::make_pair(type::INTEGER, &as_int());    }
   auto get_type_and_value_ptr(const double    &) { return std::make_pair(type::FLOAT  , &as_double()); }
+  auto get_type_and_value_ptr(const float     &) { return std::make_pair(type::FLOAT  , &as_double()); }
   auto get_type_and_value_ptr(const string    &) { return std::make_pair(type::STRING , &as_string()); }
 
   template<typename T>
